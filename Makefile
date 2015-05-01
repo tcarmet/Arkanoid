@@ -6,7 +6,7 @@
 #    By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/29 15:39:40 by tcarmet           #+#    #+#              #
-#    Updated: 2015/05/01 23:16:24 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/05/01 23:30:03 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -46,7 +46,7 @@ endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
 			git submodule init
 			git submodule update
-			~/.brew/bin/cmake glfw
+			cd glfw ; ~/.brew/bin/cmake .
 			make -C glfw/
 			Make -C libft/
 			gcc $(FLAGS) -c $(SRCS) -I $(INCDIR) -I $(INCDIRLIB) -I $(GLFWINC)
