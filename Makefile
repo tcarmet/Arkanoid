@@ -6,7 +6,7 @@
 #    By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/29 15:39:40 by tcarmet           #+#    #+#              #
-#    Updated: 2015/05/01 20:11:17 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/05/01 21:06:19 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,7 @@ ifeq ($(DEBUG),no)
 else
     FLAGS	= -g
 endif
-SRC 		= 
+SRC 		= arkanoid.c
 
 OBJ 		= $(SRC:.c=.o)
 INC 		= arkanoid.h
@@ -41,6 +41,8 @@ else
 		echo "\\033[1;31mCompilation with -Wall -Wextra -Werror...\\033[0;39m"
 endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
+			git submodule init
+			git submodule update
 			Make -C libft/
 			gcc $(FLAGS) -c $(SRCS) -I $(INCDIR) -I $(INCDIRLIB)
 			echo "\\033[1;34mCompiling $(NAME)...\\033[0;39m"
