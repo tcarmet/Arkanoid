@@ -18,7 +18,7 @@ ifeq ($(DEBUG),no)
 else
     FLAGS	= -g
 endif
-SRC 		= test.c
+SRC 		= arkanoid.c
 
 OBJ 		= $(SRC:.c=.o)
 INC 		= arkanoid.h
