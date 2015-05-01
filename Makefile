@@ -6,7 +6,7 @@
 #    By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/29 15:39:40 by tcarmet           #+#    #+#              #
-#    Updated: 2015/05/01 21:06:19 by tcarmet          ###   ########.fr        #
+#    Updated: 2015/05/01 23:16:24 by tcarmet          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,7 @@ ifeq ($(DEBUG),no)
 else
     FLAGS	= -g
 endif
-SRC 		= arkanoid.c
+SRC 		= test.c
 
 OBJ 		= $(SRC:.c=.o)
 INC 		= arkanoid.h
@@ -27,6 +27,9 @@ SRCDIR  	= ./srcs/
 OBJDIR  	= ./obj/
 INCDIRLIB	= ./libft/includes/
 INCDIR		= ./includes/
+GLFWINC		= ./glfw/include/
+GLFWLIBDIR	= ./glfw/src/
+GLFWFLAGS	=  -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
 SRCS    	= $(addprefix $(SRCDIR), $(SRC))
 OBJS    	= $(addprefix $(OBJDIR), $(OBJ))
 
@@ -43,12 +46,14 @@ endif
 		echo "\\033[1;34mGenerating objects... Please wait.\\033[0;39m"
 			git submodule init
 			git submodule update
+			~/.brew/bin/cmake glfw
+			make -C glfw/
 			Make -C libft/
-			gcc $(FLAGS) -c $(SRCS) -I $(INCDIR) -I $(INCDIRLIB)
+			gcc $(FLAGS) -c $(SRCS) -I $(INCDIR) -I $(INCDIRLIB) -I $(GLFWINC)
 			echo "\\033[1;34mCompiling $(NAME)...\\033[0;39m"
 			mkdir -p $(OBJDIR)
 			mv $(OBJ) $(OBJDIR)
-			gcc $(FLAGS) -o $(NAME) $(OBJS) $(LIBFLAGS)
+			gcc $(FLAGS) -o $(NAME) $(OBJS) $(LIBFLAGS) $(GLFWFLAGS) -L$(GLFWLIBDIR)
 			echo "\\033[1;34m$(NAME) has been created !\\033[0;39m"
 
 .PHONY: 	clean fclean re
