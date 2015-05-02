@@ -6,13 +6,13 @@
 /*   By: dpollet <dpollet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 20:14:44 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/05/02 00:29:24 by dpollet          ###   ########.fr       */
+/*   Updated: 2015/05/02 14:16:03 by dpollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arkanoid.h"
 
-void		add_lvl(t_lvl **lv, char *sc)
+void			add_lvl(t_lvl **lv, char *sc)
 {
 	t_lvl			*ns;
 	t_lvl			*tp;
@@ -34,7 +34,7 @@ void		add_lvl(t_lvl **lv, char *sc)
 		(*lv) = ns;
 }
 
-void		aff_lvl(t_lvl *lv)
+void			aff_lvl(t_lvl *lv)
 {
 	while (lv)
 	{
@@ -43,7 +43,7 @@ void		aff_lvl(t_lvl *lv)
 	}
 }
 
-void		parse_lvl(t_lvl **lv, char *sc)
+void			parse_lvl(t_lvl **lv, char *sc)
 {
 	DIR				*rp;
 	struct dirent	*fc;
@@ -58,10 +58,71 @@ void		parse_lvl(t_lvl **lv, char *sc)
 	}
 }
 
-void		creat_fenetre(void)
+static void		error_callback(int er, const char *dn)
+{
+	(void)er;
+	ft_putendl_fd(dn, 2);
+}
+
+static void		key_callback(GLFWwindow* fn, int ky, int sc, int ac, int md)
+{
+	(void)sc;
+	(void)md;
+	if (ky == GLFW_KEY_ESCAPE && ac == GLFW_PRESS)
+		glfwSetWindowShouldClose(fn, GL_TRUE);
+}
+
+void			creat_carre(double x, double y, double i, double j)
+{
+	glBegin(GL_TRIANGLE_STRIP);
+	i = i / 6;
+	j = j / 11;
+	glVertex3f(-x - i, -y + j, 0);
+	glVertex3f(x - i, -y + j, 0);
+	glVertex3f(-x - i, y + j, 0);
+	glVertex3f(x - i, y + j, 0);
+}
+
+void			contenu_window(GLFWwindow *fn)
+{
+	float			ratio;
+	int				width;
+	int				height;
+
+	glfwGetFramebufferSize(fn, &width, &height);
+	ratio = width / (float) height;
+	glViewport(0, 0, width, height);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
+	glMatrixMode(GL_MODELVIEW);
+	int j = 0;
+	int i = 0;
+	while (j < 10)
+	{
+		i = 0;
+		while (i < 7)
+		{
+			glLoadIdentity();
+			creat_carre(0.08, 0.03, (double)-i, (double)j);
+			glEnd();
+			glLoadIdentity();
+			creat_carre(0.08, 0.03, (double)i, (double)j);
+			glEnd();
+			i++;
+		}
+		j++;
+	}
+	glfwSwapBuffers(fn);
+	glfwPollEvents();
+}
+
+void			creat_fenetre(void)
 {
 	GLFWwindow		*fn;
 
+	glfwSetErrorCallback(error_callback);
 	fn = glfwCreateWindow(640,480, "Lvl 1", NULL, NULL);
 	if (!fn)
 	{
@@ -69,10 +130,11 @@ void		creat_fenetre(void)
 		exit(-1);
 	}
 	glfwMakeContextCurrent(fn);
+	glfwSwapInterval(1);
+	glfwSetKeyCallback(fn, key_callback);
 	while (!glfwWindowShouldClose(fn))
-	{
-		// LOL
-	}
+		contenu_window(fn);
+	glfwDestroyWindow(fn);
 }
 
 int			main(void)

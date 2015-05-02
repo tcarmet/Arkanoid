@@ -6,7 +6,7 @@
 /*   By: dpollet <dpollet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 20:08:45 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/05/01 23:33:21 by dpollet          ###   ########.fr       */
+/*   Updated: 2015/05/02 12:57:16 by dpollet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <dirent.h>
 # include <math.h>
 # include <GLFW/glfw3.h>
+
+typedef struct s_coor_gl
+{
+	int x;
+	int y;
+}				t_coor_gl;
 
 typedef struct	s_lvl
 {
