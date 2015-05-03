@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:27:17 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 16:31:14 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 17:13:15 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ typedef enum	e_error
 /*
 ** init.c
 */
+void			init_ball(t_ball *ball);
+void			init_ship(t_ship *ship);
 void			init_all(t_all *all);
 
 /*
