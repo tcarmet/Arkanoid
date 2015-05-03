@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 06:41:08 by jripoute          #+#    #+#             */
-/*   Updated: 2015/05/03 19:46:51 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 20:11:18 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static GLFWwindow	*init_window(void)
 	return (win);
 }
 
-void			init_ship(t_ship *ship)
+void				init_ship(t_ship *ship)
 {
 	ship->pos.x = -SHIP_W;
 	ship->pos.y = SHIP_OFFSET + SHIP_H;
@@ -37,7 +37,7 @@ void			init_ship(t_ship *ship)
 	ship->width = SHIP_W * 2;
 }
 
-void			init_ball(t_ball *ball)
+void				init_ball(t_ball *ball)
 {
 	ball->pos.x = 0;
 	ball->pos.y = SHIP_OFFSET + BALL_SIZE * 2;
@@ -47,7 +47,7 @@ void			init_ball(t_ball *ball)
 	ball->radius_pow_2 = BALL_SIZE * BALL_SIZE;
 }
 
-void			init_all(t_all *all)
+void				init_all(t_all *all)
 {
 	all->lv = NULL;
 	all->cur = 0;
