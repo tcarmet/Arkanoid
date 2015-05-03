@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:48:39 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 21:07:26 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 22:30:14 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,7 @@ void			move_ball(t_all *all)
 			init_ball(&all->ball);
 			init_ship(&all->ship);
 			if (--all->life == 0)
-			{
-				glfwSetWindowShouldClose(all->win.ptr, GL_TRUE);
-				ft_putendl("Vous avez perdu !!");
-			}
+				ft_print_shell(all, "Vous avez perdu !!");
 			all->cur = 1;
 		}
 	}

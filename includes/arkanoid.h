@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:27:17 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 20:59:10 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 22:28:57 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <GLFW/glfw3.h>
 # include <stdlib.h>
-# include <math.h>
 # include <fcntl.h>
 # include <dirent.h>
 # include "libft.h"
@@ -176,6 +175,7 @@ int				ft_check_map(t_map *map);
 /*
 ** misc.c
 */
+void			ft_print_shell(t_all *all, char *msg);
 void			ft_next_level(t_all *all);
 void			aff_lvl(t_lvl *lv);
 void			ft_print(double x, double y, char *string, void *font);

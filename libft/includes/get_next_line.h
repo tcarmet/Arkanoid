@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcarmet <tcarmet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/15 21:23:57 by tcarmet           #+#    #+#             */
-/*   Updated: 2015/04/30 18:15:15 by tcarmet          ###   ########.fr       */
+/*   Updated: 2015/05/03 22:29:12 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <sys/types.h>
 # include <stdlib.h>
+# include <math.h>
 # include <sys/stat.h>
 # include <unistd.h>
 # include "libft.h"

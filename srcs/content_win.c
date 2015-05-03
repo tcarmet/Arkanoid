@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:27:31 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 20:56:33 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 22:20:20 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void		content_win(t_all *all)
 	{
 		file = ft_strjoin("./levels/", all->lv->fl);
 		map_parser(&all->map, file);
+		free(file);
 	}
 	move_ball(all);
 	key_hook(all);
