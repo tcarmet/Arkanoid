@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:48:39 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 16:04:44 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 20:04:51 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int		set_ball_pos(double *pos, double ret, double min, double max)
 {
 	if (ret < max && ret > min)
 	{
+		if (ret < -1)
+			return (0);
 		*pos = ret;
 		return (1);
 	}
@@ -33,13 +35,30 @@ static void		ball_rebound(t_ball *ball, t_ship *ship)
 	ball->vspeed.x = -dx * COEFF_D + SHIP_SPEED * COEFF_SPEED;
 }
 
-void			move_ball(t_ball *ball, t_ship *ship, t_map *map)
+void			move_ball(t_all *all)
 {
-	if (set_ball_pos(&ball->pos.y, ball->pos.y + ball->vspeed.y, -1, 1) == -1)
-		ball->vspeed.y = -ball->vspeed.y;
-	if (set_ball_pos(&ball->pos.x, ball->pos.x + ball->vspeed.x, -1, 1) == -1)
-		ball->vspeed.x = -ball->vspeed.x;
-	if (check_ship_collision(ball, ship) == TRUE)
-		ball_rebound(ball, ship);
-	check_brick_collision(ball, map);
+	int			ret;
+
+	if ((ret = set_ball_pos(&all->ball.pos.y, all->ball.pos.y + all->ball.vspeed.y, -1.5, 1)) <= 0)
+	{
+		if (ret == -1)
+			all->ball.vspeed.y = -all->ball.vspeed.y;
+		else
+		{
+			init_ball(&all->ball);
+			init_ship(&all->ship);
+			all->life--;
+			if (all->life == 0)
+			{
+				glfwSetWindowShouldClose(all->win.ptr, GL_TRUE);
+				ft_putendl("Vous avez perdu !!");
+			}
+			all->cur = 1;
+		}
+	}
+	if (set_ball_pos(&all->ball.pos.x, all->ball.pos.x + all->ball.vspeed.x, -1, 1) == -1)
+		all->ball.vspeed.x = -all->ball.vspeed.x;
+	if (check_ship_collision(&all->ball, &all->ship) == TRUE)
+		ball_rebound(&all->ball, &all->ship);
+	check_brick_collision(&all->ball, &all->map);
 }

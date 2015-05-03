@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:27:17 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 19:32:02 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 20:00:22 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void			key_callback(GLFWwindow *window, int key,
 /*
 ** ball.c
 */
-void			move_ball(t_ball *ball, t_ship *ship, t_map *map);
+void			move_ball(t_all *all);
 
 /*
 ** ship.c
