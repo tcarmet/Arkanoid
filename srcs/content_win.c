@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:27:31 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 17:46:42 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 19:43:33 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,14 @@ void		content_win(t_all *all)
 	{
 		file = ft_strjoin("./levels/", all->lv->fl);
 		map_parser(&all->map, file);
-		all->cur = 1;
 	}
+	move_ball(&all->ball, &all->ship, &all->map);
+	key_hook(all);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-(all->win.ratio), all->win.ratio, -1.f, 1.f, 1.f, -1.f);
 	glMatrixMode(GL_MODELVIEW);
 	draw_all(all);
-	move_ball(&all->ball, &all->ship, &all->map);
-	key_hook(all);
 	if (ft_check_map(&all->map))
 		ft_next_level(all);
 }

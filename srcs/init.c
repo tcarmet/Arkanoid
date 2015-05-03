@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 06:41:08 by jripoute          #+#    #+#             */
-/*   Updated: 2015/05/03 17:27:47 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 19:46:51 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void			init_all(t_all *all)
 	all->cur = 0;
 	all->life = 3;
 	parse_lvl(all, "./levels/");
+	if (all->lv == NULL)
+		ft_error(NO_MAP);
 	init_ship(&all->ship);
 	init_ball(&all->ball);
 	all->win.ptr = init_window();
