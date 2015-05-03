@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:27:17 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 20:00:22 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 20:59:10 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <dirent.h>
 # include "libft.h"
+# include <GLUT/glut.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -177,5 +178,7 @@ int				ft_check_map(t_map *map);
 */
 void			ft_next_level(t_all *all);
 void			aff_lvl(t_lvl *lv);
+void			ft_print(double x, double y, char *string, void *font);
+void			ft_score(t_all *all);
 
 #endif

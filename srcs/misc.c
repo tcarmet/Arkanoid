@@ -6,13 +6,13 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 15:05:18 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 20:16:00 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 21:25:24 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arkanoid.h"
 
-void	ft_next_level(t_all *all)
+void		ft_next_level(t_all *all)
 {
 	if (all->lv->nt != NULL)
 	{
@@ -26,14 +26,51 @@ void	ft_next_level(t_all *all)
 	{
 		glfwSetWindowShouldClose(all->win.ptr, GL_TRUE);
 		ft_putendl("Vous avez gagne !!");
+		ft_putstr("Score : ");
+		ft_putnbr(all->score);
+		ft_putchar('\n');
 	}
 }
 
-void	aff_lvl(t_lvl *lv)
+void		aff_lvl(t_lvl *lv)
 {
 	while (lv)
 	{
 		ft_putendl(lv->fl);
 		lv = lv->nt;
+	}
+}
+
+void		ft_score(t_all *all)
+{
+	char	*s1;
+	char	*s2;
+	char	*score;
+	char	*life;
+
+	s1 = ft_itoa(all->score);
+	s2 = ft_itoa(all->life);
+	score = ft_strjoin("SCORE : ", s1);
+	life = ft_strjoin("LIFE : ", s2);
+	ft_print(-1, -0.95, score,  GLUT_BITMAP_HELVETICA_18);
+	ft_print(0.85, -0.95, life,  GLUT_BITMAP_HELVETICA_18);
+	ft_strdel(&life);
+	ft_strdel(&score);
+	ft_strdel(&s1);
+	ft_strdel(&s2);
+}
+
+void		ft_print(double x, double y, char *string, void *font)
+{
+	int 	len;
+	int 	i;
+
+	glRasterPos2f(x,y);
+	len = ft_strlen(string);
+	i = 0;
+	while (i < len)
+	{
+		glutBitmapCharacter(font, string[i]);
+		i++;
 	}
 }

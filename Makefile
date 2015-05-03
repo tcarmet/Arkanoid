@@ -14,7 +14,7 @@ NAME 		= arkanoid
 
 DEBUG 		= no
 ifeq ($(DEBUG),no)
-    FLAGS	= -Wall -Werror -Wextra
+    FLAGS	= -Wall -Werror -Wextra -Wno-deprecated
 else
     FLAGS	= -g
 endif
@@ -30,7 +30,7 @@ INCDIRLIB	= ./libft/includes/
 INCDIR		= ./includes/
 GLFWINC		= ./glfw/include/
 GLFWLIBDIR	= ./glfw/src/
-GLFWFLAGS	=  -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo
+GLFWFLAGS	=  -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo -framework GLUT
 SRCS    	= $(addprefix $(SRCDIR), $(SRC))
 OBJS    	= $(addprefix $(OBJDIR), $(OBJ))
 

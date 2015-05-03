@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:48:39 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 20:10:16 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 21:07:26 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void			move_ball(t_all *all)
 		all->ball.vspeed.x = -all->ball.vspeed.x;
 	if (check_ship_collision(&all->ball, &all->ship) == TRUE)
 		ball_rebound(&all->ball, &all->ship);
-	check_brick_collision(&all->ball, &all->map);
+	if (check_brick_collision(&all->ball, &all->map))
+		all->score += 10;
 }

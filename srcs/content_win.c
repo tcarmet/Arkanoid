@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:27:31 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 20:04:54 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 20:56:33 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		content_win(t_all *all)
 	}
 	move_ball(all);
 	key_hook(all);
+	ft_score(all);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-(all->win.ratio), all->win.ratio, -1.f, 1.f, 1.f, -1.f);
