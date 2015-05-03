@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 06:41:08 by jripoute          #+#    #+#             */
-/*   Updated: 2015/05/03 16:15:44 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 16:20:38 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void			init_ball(t_ball *ball)
 
 void			init_all(t_all *all)
 {
+	all->lv = NULL;
+	all->cur = 0;
 	parse_lvl(all, "./levels/");
 	init_ship(&all->ship);
 	init_ball(&all->ball);
