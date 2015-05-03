@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:20:42 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 16:11:16 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 17:41:38 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ void	key_hook(t_all *all)
 {
 	glfwPollEvents();
 	if (glfwGetKey(all->win.ptr, GLFW_KEY_LEFT) == GLFW_PRESS)
-		set_ship_pos(&all->ship, all->ship.pos.x - SHIP_SPEED);
+		set_ship_pos(all, all->ship.pos.x - SHIP_SPEED);
 	if (glfwGetKey(all->win.ptr, GLFW_KEY_RIGHT) == GLFW_PRESS)
-		set_ship_pos(&all->ship, all->ship.pos.x + SHIP_SPEED);
-	// if (glfwGetKey(all->win.ptr, GLFW_KEY_SPACE) == GLFW_PRESS)
-	// 	printf("SPACE\n");
+		set_ship_pos(all, all->ship.pos.x + SHIP_SPEED);
+	if (glfwGetKey(all->win.ptr, GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		all->ball.vspeed.x = BALL_SPEED;
+		all->ball.vspeed.y = BALL_SPEED;
+	}
 }
 
 void	key_callback(GLFWwindow *window, int key, int sc, int ac, int mod)

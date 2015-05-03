@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:51:48 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 15:44:21 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 19:09:34 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int			removeball_n_setnewvec(t_ball *ball, t_brick *brick)
 {
-	brick->state = 0;
+	if (brick->state != 9)
+		brick->state -= 1;
 	ball->vspeed.y = -ball->vspeed.y;
 	return (1);
 }

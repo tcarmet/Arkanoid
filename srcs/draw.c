@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:33:15 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 14:43:38 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 19:21:34 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,17 @@ static void		draw_circle(double x, double y, double rayon, int aliasing)
 static void		draw_one_brick(t_brick *brick)
 {
 	glBegin(GL_QUADS);
-	glColor3ub(75, 75, 75);
+	if (brick->state != 9)
+	{
+		if (brick->state == 1)
+			glColor3ub(125, 0, 0);
+		else if (brick->state == 2)
+			glColor3ub(0, 125, 0);
+		else if (brick->state == 3)
+			glColor3ub(0, 0, 125);
+	}
+	else
+		glColor3ub(255, 255, 255);
 	glVertex2d(brick->pos.x, brick->pos.y);
 	glVertex2d(brick->pos.x, brick->pos.y - brick->height);
 	glVertex2d(brick->pos.x + brick->width, brick->pos.y - brick->height);

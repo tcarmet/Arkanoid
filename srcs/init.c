@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 06:41:08 by jripoute          #+#    #+#             */
-/*   Updated: 2015/05/03 17:13:07 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 17:27:47 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void			init_ball(t_ball *ball)
 {
 	ball->pos.x = 0;
 	ball->pos.y = SHIP_OFFSET + BALL_SIZE * 2;
-	ball->vspeed.x = BALL_SPEED;
-	ball->vspeed.y = BALL_SPEED;
+	ball->vspeed.x = 0;
+	ball->vspeed.y = 0;
 	ball->radius = BALL_SIZE;
 	ball->radius_pow_2 = BALL_SIZE * BALL_SIZE;
 }

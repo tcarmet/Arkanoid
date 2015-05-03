@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 15:05:18 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 17:13:40 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 19:27:42 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	ft_next_level(t_all *all)
 		all->cur = 0;
 		init_ball(&all->ball);
 		init_ship(&all->ship);
+	}
+	else
+	{
+		glfwSetWindowShouldClose(all->win.ptr, GL_TRUE);
+		ft_putendl("Vous avez gagne !!");
 	}
 }
 
