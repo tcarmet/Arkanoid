@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 06:41:08 by jripoute          #+#    #+#             */
-/*   Updated: 2015/05/03 20:11:18 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 20:43:12 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void				init_all(t_all *all)
 {
 	all->lv = NULL;
 	all->cur = 0;
-	all->life = 3;
+	all->life = 6;
+	all->score = 0;
 	parse_lvl(all, "./levels/");
 	if (all->lv == NULL)
 		ft_error(NO_MAP);
