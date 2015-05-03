@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   misc.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/03 15:05:18 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 16:31:42 by tcoppin          ###   ########.fr       */
+/*   Created: 2015/05/03 16:24:16 by tcoppin           #+#    #+#             */
+/*   Updated: 2015/05/03 16:42:49 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arkanoid.h"
 
-void	ft_next_level(t_all *all)
+int		ft_check_map(t_map *map)
 {
-	if (all->lv->nt != NULL)
-	{
-		all->lv = all->lv->nt;
-		all->cur = 0;
-	}
-}
+	int		i;
+	int		j;
 
-void	aff_lvl(t_lvl *lv)
-{
-	while (lv)
+	i = 0;
+	while (i < map->height)
 	{
-		ft_putendl(lv->fl);
-		lv = lv->nt;
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->map[i][j].state != 0)
+				return (0);
+			j++;
+		}
+		i++;
 	}
+	return (1);
 }

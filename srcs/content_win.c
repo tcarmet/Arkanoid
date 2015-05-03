@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 14:27:31 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 16:05:18 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 16:35:48 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ void		content_win(t_all *all)
 	draw_all(all);
 	move_ball(&all->ball, &all->ship, &all->map);
 	key_hook(all);
+	if (ft_check_map(&all->map))
+	{
+		ft_putendl("ICI");
+		ft_next_level(all);
+	}
 }

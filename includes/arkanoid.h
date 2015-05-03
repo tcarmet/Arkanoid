@@ -6,7 +6,7 @@
 /*   By: tcoppin <tcoppin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:27:17 by tcoppin           #+#    #+#             */
-/*   Updated: 2015/05/03 16:11:38 by tcoppin          ###   ########.fr       */
+/*   Updated: 2015/05/03 16:31:14 by tcoppin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct	s_all
 	t_map		map;
 	t_lvl		*lv;
 	int			cur;
+	int			life;
 }				t_all;
 
 typedef enum	e_error
@@ -164,8 +165,14 @@ t_bool			check_brick_collision(t_ball *ball, t_map *map);
 t_bool			check_ship_collision(t_ball *ball, t_ship *ship);
 
 /*
+** map.c
+*/
+int				ft_check_map(t_map *map);
+
+/*
 ** misc.c
 */
+void			ft_next_level(t_all *all);
 void			aff_lvl(t_lvl *lv);
 
 #endif
